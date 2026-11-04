@@ -394,6 +394,17 @@ function bindModalControls() {
     // ... existing saves-back logic ...
   });
 
+    const newSlotBtn = document.getElementById('saves-new');
+  if (newSlotBtn) {
+    newSlotBtn.addEventListener('click', () => {
+      if (typeof confirmNewGame === 'function') {
+        confirmNewGame();
+      } else {
+        alert('New Game function is missing!');
+      }
+    });
+  }
+
   // ... other existing listeners ...
 
   ['newgame-modal', 'delete-modal', 'modal-backdrop'].forEach((id) => {
