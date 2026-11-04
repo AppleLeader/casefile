@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <radialGradient id="lamplight" cx="35%" cy="30%" r="60%">
+      <stop offset="0%"   stop-color="#f4dca8" stop-opacity="0.9"/>
+      <stop offset="55%"  stop-color="#d9b47a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Warm lamp light from camera-left (behind the figure) -->
+  <rect width="600" height="800" fill="url(#lamplight)"/>
+
+  <!-- Neck + shoulders (cut off at bottom) -->
+  <path d="M 150 800 Q 150 620 250 570 Q 300 555 300 555
+           Q 300 555 350 570 Q 450 620 450 800 Z" fill="#1a1815"/>
+  <!-- White shirt collar -->
+  <path d="M 260 585 L 300 630 L 340 585 Q 300 565 260 585 Z" fill="#ece4d4"/>
+  <!-- Coat lapel hint -->
+  <path d="M 260 590 L 250 680 L 300 640 L 350 680 L 340 590 Z" fill="#1a1815" opacity="0.6"/>
+
+  <!-- Head -->
+  <ellipse cx="300" cy="380" rx="130" ry="155" fill="#2a221a"/>
+
+  <!-- Hair (dark brown, slightly long at the collar) -->
+  <path d="M 170 360 Q 165 230 230 190 Q 300 165 370 190 Q 435 230 430 360
+           Q 420 280 400 260 Q 350 240 300 240 Q 250 240 200 260 Q 180 280 170 360 Z" fill="#1a1208"/>
+  <!-- Stray hair strands -->
+  <path d="M 180 380 Q 200 340 240 320" stroke="#1a1208" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M 420 380 Q 400 340 360 320" stroke="#1a1208" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Face shading (side shadow, from lamp on left) -->
+  <path d="M 300 240 Q 420 250 440 400 Q 440 520 380 550 Q 350 555 300 555 Z" fill="#1a1510" opacity="0.4"/>
+
+  <!-- Eyebrows -->
+  <path d="M 220 340 Q 245 325 270 335" stroke="#0a0907" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M 330 335 Q 355 325 380 340" stroke="#0a0907" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Eyes (steady, calm, alert) -->
+  <ellipse cx="245" cy="375" rx="22" ry="12" fill="#0a0907"/>
+  <ellipse cx="355" cy="375" rx="22" ry="12" fill="#0a0907"/>
+  <circle cx="255" cy="375" r="5" fill="#f4dca8"/>
+  <circle cx="365" cy="375" r="5" fill="#f4dca8"/>
+
+  <!-- Scar through left eyebrow (short vertical) -->
+  <path d="M 240 320 L 245 340 L 250 345" stroke="#8a6a5a" stroke-width="2" fill="none"/>
+
+  <!-- Nose -->
+  <path d="M 300 400 L 295 445 Q 300 455 315 450" stroke="#0a0907" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Mouth (relaxed, closed, slight downward turn = neutral) -->
+  <ellipse cx="300" cy="492" rx="18" ry="6" fill="#0a0907"/>
+
+  <!-- Stubble shading on jaw -->
+  <path d="M 220 480 Q 240 540 300 555 Q 360 540 380 480 Q 360 530 300 545 Q 240 530 220 480 Z" fill="#1a1208" opacity="0.4"/>
+</svg>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Sky gradient: cold pre-dawn -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#2a3540"/>
+      <stop offset="45%"  stop-color="#4a5560"/>
+      <stop offset="85%"  stop-color="#8a7e70"/>
+      <stop offset="100%" stop-color="#b09078"/>
+    </linearGradient>
+
+    <!-- Warm window glow (radial) -->
+    <radialGradient id="windowGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#f4dca8" stop-opacity="1"/>
+      <stop offset="60%"  stop-color="#d9b47a" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#d9b47a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Building shadow gradient -->
+    <linearGradient id="buildingShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#0a0907"/>
+      <stop offset="60%"  stop-color="#1b1a17"/>
+      <stop offset="100%" stop-color="#2a2823"/>
+    </linearGradient>
+
+    <!-- Ground gradient -->
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1b1a17"/>
+      <stop offset="50%"  stop-color="#2a2823"/>
+      <stop offset="100%" stop-color="#0a0907"/>
+    </linearGradient>
+
+    <!-- Haze overlay -->
+    <linearGradient id="haze" x1="0" y1="0.5" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#8a7e70" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#8a7e70" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <!-- Vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.75"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+
+  <!-- Distant city skyline (silhouettes, behind the main building) -->
+  <g fill="#1a1e26" opacity="0.7">
+    <rect x="0"    y="480" width="80"  height="300"/>
+    <rect x="85"   y="520" width="60"  height="260"/>
+    <rect x="150"  y="450" width="90"  height="330"/>
+    <rect x="250"  y="500" width="70"  height="280"/>
+    <rect x="1600" y="460" width="100" height="320"/>
+    <rect x="1710" y="520" width="80"  height="260"/>
+    <rect x="1800" y="490" width="120" height="290"/>
+    <!-- A few tiny lit windows in the distance -->
+    <rect x="170" y="500" width="8" height="10" fill="#d9b47a" opacity="0.6"/>
+    <rect x="190" y="540" width="8" height="10" fill="#d9b47a" opacity="0.4"/>
+    <rect x="1620" y="500" width="8" height="10" fill="#d9b47a" opacity="0.5"/>
+    <rect x="1820" y="530" width="8" height="10" fill="#d9b47a" opacity="0.4"/>
+  </g>
+
+  <!-- Main building — foreground, low angle -->
+  <!-- The main building occupies the center-left of the frame,
+       tall, cropping out of the top (low angle shot) -->
+  <g>
+    <!-- Main wall -->
+    <path d="M 300 1080 L 300 200 L 1050 200 L 1050 1080 Z" fill="url(#buildingShade)"/>
+
+    <!-- Brick texture (subtle horizontal lines) -->
+    <g stroke="#0a0907" stroke-width="1" opacity="0.4">
+      <line x1="300" y1="280"  x2="1050" y2="280"/>
+      <line x1="300" y1="360"  x2="1050" y2="360"/>
+      <line x1="300" y1="440"  x2="1050" y2="440"/>
+      <line x1="300" y1="520"  x2="1050" y2="520"/>
+      <line x1="300" y1="600"  x2="1050" y2="600"/>
+      <line x1="300" y1="680"  x2="1050" y2="680"/>
+      <line x1="300" y1="760"  x2="1050" y2="760"/>
+      <line x1="300" y1="840"  x2="1050" y2="840"/>
+      <line x1="300" y1="920"  x2="1050" y2="920"/>
+      <line x1="300" y1="1000" x2="1050" y2="1000"/>
+    </g>
+
+    <!-- Windows (dark, unlit, with a few exceptions) -->
+    <!-- Row 1 -->
+    <rect x="370" y="320" width="90" height="110" fill="#0a0907"/>
+    <rect x="490" y="320" width="90" height="110" fill="#0a0907"/>
+    <rect x="610" y="320" width="90" height="110" fill="#0a0907"/>
+    <rect x="730" y="320" width="90" height="110" fill="#0a0907"/>
+    <rect x="850" y="320" width="90" height="110" fill="#0a0907"/>
+    <rect x="960" y="320" width="90" height="110" fill="#0a0907"/>
+    <!-- Row 2 -->
+    <rect x="370" y="460" width="90" height="110" fill="#0a0907"/>
+    <rect x="490" y="460" width="90" height="110" fill="#0a0907"/>
+    <rect x="610" y="460" width="90" height="110" fill="#0a0907"/>
+    <rect x="730" y="460" width="90" height="110" fill="#0a0907"/>
+    <rect x="850" y="460" width="90" height="110" fill="#0a0907"/>
+    <rect x="960" y="460" width="90" height="110" fill="#0a0907"/>
+
+    <!-- Row 3 — one window is LIT. This is Adrian's office. -->
+    <rect x="370" y="600" width="90" height="110" fill="#0a0907"/>
+    <rect x="490" y="600" width="90" height="110" fill="#0a0907"/>
+    <rect x="610" y="600" width="90" height="110" fill="#0a0907"/>
+    <!-- LIT WINDOW -->
+    <rect x="730" y="600" width="90" height="110" fill="#f4dca8"/>
+    <rect x="730" y="600" width="90" height="110" fill="none" stroke="#d9b47a" stroke-width="3"/>
+    <!-- Warm glow spilling out of the lit window -->
+    <ellipse cx="775" cy="655" rx="280" ry="220" fill="url(#windowGlow)" opacity="0.7"/>
+    <!-- Window cross-frame on the lit window -->
+    <line x1="775" y1="600" x2="775" y2="710" stroke="#0a0907" stroke-width="4"/>
+    <line x1="730" y1="655" x2="820" y2="655" stroke="#0a0907" stroke-width="4"/>
+    <!-- Curtain silhouette inside the lit window -->
+    <path d="M 735 600 L 735 710 L 755 710 Q 760 660 755 600 Z" fill="#7a5a35" opacity="0.5"/>
+    <!-- Unlit neighbors -->
+    <rect x="850" y="600" width="90" height="110" fill="#0a0907"/>
+    <rect x="960" y="600" width="90" height="110" fill="#0a0907"/>
+    <!-- Row 4 -->
+    <rect x="370" y="740" width="90" height="110" fill="#0a0907"/>
+    <rect x="490" y="740" width="90" height="110" fill="#0a0907"/>
+    <rect x="610" y="740" width="90" height="110" fill="#0a0907"/>
+    <rect x="730" y="740" width="90" height="110" fill="#0a0907"/>
+    <rect x="850" y="740" width="90" height="110" fill="#0a0907"/>
+    <rect x="960" y="740" width="90" height="110" fill="#0a0907"/>
+    <!-- Row 5 -->
+    <rect x="370" y="880" width="90" height="110" fill="#0a0907"/>
+    <rect x="490" y="880" width="90" height="110" fill="#0a0907"/>
+    <rect x="610" y="880" width="90" height="110" fill="#0a0907"/>
+    <rect x="730" y="880" width="90" height="110" fill="#0a0907"/>
+    <rect x="850" y="880" width="90" height="110" fill="#0a0907"/>
+    <rect x="960" y="880" width="90" height="110" fill="#0a0907"/>
+
+    <!-- Fire escape silhouette on the right side -->
+    <g stroke="#0a0907" stroke-width="3" fill="none">
+      <line x1="1080" y1="600" x2="1080" y2="950"/>
+      <line x1="1060" y1="620" x2="1080" y2="620"/>
+      <line x1="1060" y1="720" x2="1080" y2="720"/>
+      <line x1="1060" y1="820" x2="1080" y2="820"/>
+      <line x1="1060" y1="920" x2="1080" y2="920"/>
+    </g>
+
+    <!-- Ground floor doorway (dark) -->
+    <rect x="640" y="960" width="120" height="120" fill="#000"/>
+    <rect x="660" y="980" width="80" height="100" fill="#0a0907"/>
+  </g>
+
+  <!-- Street / ground -->
+  <path d="M 0 1030 L 1920 1000 L 1920 1080 L 0 1080 Z" fill="url(#ground)"/>
+
+  <!-- Street lamp (right side) casting a pool of warm light on the pavement -->
+  <g>
+    <rect x="1400" y="680" width="10" height="360" fill="#0a0907"/>
+    <ellipse cx="1405" cy="690" rx="40" ry="15" fill="#0a0907"/>
+    <circle cx="1405" cy="680" r="12" fill="#f4dca8" opacity="0.9"/>
+    <ellipse cx="1405" cy="1040" rx="220" ry="40" fill="url(#windowGlow)" opacity="0.4"/>
+  </g>
+
+  <!-- Distant car (right side, small) -->
+  <g fill="#0a0907">
+    <ellipse cx="1650" cy="1020" rx="80" ry="22"/>
+    <rect x="1590" y="990" width="120" height="30" rx="5"/>
+    <circle cx="1610" cy="1045" r="12" fill="#1b1a17"/>
+    <circle cx="1690" cy="1045" r="12" fill="#1b1a17"/>
+    <!-- Headlight hint -->
+    <circle cx="1710" cy="1000" r="6" fill="#d9b47a" opacity="0.8"/>
+  </g>
+
+  <!-- Morning haze overlay -->
+  <rect width="1920" height="1080" fill="url(#haze)"/>
+
+  <!-- Vignette -->
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>

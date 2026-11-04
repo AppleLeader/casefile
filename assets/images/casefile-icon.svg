@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Radial glow from the lamp -->
+    <radialGradient id="lampGlow" cx="50%" cy="30%" r="55%" fx="50%" fy="28%">
+      <stop offset="0%"  stop-color="#d9b47a" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#b9905a" stop-opacity="0.55"/>
+      <stop offset="70%" stop-color="#2a2823" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1b1a17" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ground light (warm pool on the pavement) -->
+    <radialGradient id="groundLight" cx="50%" cy="88%" r="35%" fx="50%" fy="88%">
+      <stop offset="0%"  stop-color="#d9b47a" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#7a5a35" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1b1a17" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Subtle vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.7"/>
+    </radialGradient>
+
+    <!-- Rain pattern -->
+    <pattern id="rain" x="0" y="0" width="40" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+      <line x1="10" y1="0"  x2="10" y2="30" stroke="#3a352c" stroke-width="1.5" stroke-opacity="0.35"/>
+      <line x1="30" y1="20" x2="30" y2="50" stroke="#3a352c" stroke-width="1"   stroke-opacity="0.28"/>
+      <line x1="20" y1="55" x2="20" y2="80" stroke="#3a352c" stroke-width="1.2" stroke-opacity="0.30"/>
+    </pattern>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="1024" height="1024" fill="#1b1a17"/>
+
+  <!-- Rain overlay -->
+  <rect width="1024" height="1024" fill="url(#rain)"/>
+
+  <!-- Ambient lamp glow behind the figure -->
+  <rect width="1024" height="1024" fill="url(#lampGlow)"/>
+
+  <!-- Ground light pool -->
+  <ellipse cx="512" cy="880" rx="420" ry="90" fill="url(#groundLight)"/>
+
+  <!-- The lamp post -->
+  <g stroke="#0a0907" stroke-linecap="round">
+    <!-- Post -->
+    <rect x="640" y="300" width="16" height="580" fill="#0a0907" stroke="none"/>
+    <!-- Lamp housing -->
+    <path d="M 620 300 L 676 300 L 668 260 L 628 260 Z" fill="#0a0907" stroke="none"/>
+    <!-- Lamp head -->
+    <path d="M 620 300 L 676 300 L 668 260 L 628 260 Z" fill="none" stroke="#7a5a35" stroke-width="2"/>
+    <!-- Warm bulb glow (small, inside the housing) -->
+    <circle cx="648" cy="278" r="8" fill="#f4dca8" opacity="0.9"/>
+    <!-- Support arm -->
+    <path d="M 648 260 L 648 210" stroke="#0a0907" stroke-width="10" fill="none"/>
+    <path d="M 600 210 L 696 210" stroke="#0a0907" stroke-width="12" fill="none"/>
+  </g>
+
+  <!-- The detective silhouette -->
+  <g fill="#0a0907">
+    <!-- Fedora brim -->
+    <ellipse cx="430" cy="440" rx="95" ry="16"/>
+    <!-- Fedora crown -->
+    <path d="M 355 440 Q 355 385 385 375 L 475 375 Q 505 385 505 440 Z"/>
+    <!-- Hat band (subtle) -->
+    <rect x="360" y="425" width="140" height="10" fill="#3a352c"/>
+    <!-- Head (small, under hat) -->
+    <circle cx="430" cy="468" r="26"/>
+    <!-- Shoulders + trench coat -->
+    <path d="M 260 720 
+             Q 275 570 350 500
+             Q 380 480 430 480
+             Q 480 480 510 500
+             Q 585 570 600 720
+             Z"/>
+    <!-- Collar (popped) -->
+    <path d="M 380 500 L 400 540 L 430 515 L 460 540 L 480 500
+             Q 460 490 430 490 Q 400 490 380 500 Z" fill="#1a1815"/>
+    <!-- Coat belt hint -->
+    <rect x="355" y="640" width="150" height="8" fill="#1a1815"/>
+    <!-- Folds in coat (thin strokes for detail) -->
+    <path d="M 380 560 Q 375 640 385 720" stroke="#1a1815" stroke-width="3" fill="none"/>
+    <path d="M 480 560 Q 485 640 475 720" stroke="#1a1815" stroke-width="3" fill="none"/>
+    <path d="M 430 540 L 430 720" stroke="#1a1815" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Foreground shadow at the feet -->
+  <ellipse cx="430" cy="855" rx="220" ry="28" fill="#000" opacity="0.6"/>
+
+  <!-- Vignette -->
+  <rect width="1024" height="1024" fill="url(#vignette)" pointer-events="none"/>
+
+  <!-- Thin accent border (optional, gives the icon a "framed" feel) -->
+  <rect x="8" y="8" width="1008" height="1008" 
+        fill="none" stroke="#7a2f2a" stroke-width="4" rx="24" ry="24" opacity="0.85"/>
+</svg>

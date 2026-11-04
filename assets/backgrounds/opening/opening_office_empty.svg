@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#3a332a"/>
+      <stop offset="100%" stop-color="#1b1a17"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#2a221a"/>
+      <stop offset="100%" stop-color="#0a0907"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#f4dca8" stop-opacity="1"/>
+      <stop offset="40%"  stop-color="#d9b47a" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d9b47a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="windowLight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#c8d0dc" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#c8d0dc" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.8"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#wall)"/>
+
+  <!-- Back wall panel lines -->
+  <g stroke="#0a0907" stroke-width="2" opacity="0.4">
+    <line x1="0"   y1="180"  x2="1920" y2="180"/>
+    <line x1="0"   y1="780"  x2="1920" y2="780"/>
+  </g>
+
+  <!-- Wood floor -->
+  <rect x="0" y="780" width="1920" height="300" fill="url(#floor)"/>
+  <g stroke="#1a1208" stroke-width="1" opacity="0.5">
+    <line x1="0"   y1="820" x2="1920" y2="820"/>
+    <line x1="0"   y1="880" x2="1920" y2="880"/>
+    <line x1="0"   y1="950" x2="1920" y2="950"/>
+    <line x1="0"   y1="1030" x2="1920" y2="1030"/>
+  </g>
+
+  <!-- Window (left, letting in cool morning light) -->
+  <g>
+    <rect x="60" y="180" width="480" height="480" fill="#1a2028"/>
+    <rect x="60" y="180" width="480" height="480" fill="none" stroke="#0a0907" stroke-width="8"/>
+    <line x1="300" y1="180" x2="300" y2="660" stroke="#0a0907" stroke-width="6"/>
+    <line x1="60"  y1="420" x2="540" y2="420" stroke="#0a0907" stroke-width="6"/>
+    <rect x="60" y="180" width="480" height="480" fill="url(#windowLight)"/>
+    <!-- Light shaft from the window on the floor -->
+    <path d="M 60 660 L 540 660 L 900 1080 L 0 1080 Z" fill="#c8d0dc" opacity="0.06"/>
+  </g>
+
+  <!-- Bookshelf (right side, mostly empty) -->
+  <g>
+    <rect x="1380" y="300" width="440" height="480" fill="#1a1208" stroke="#0a0907" stroke-width="6"/>
+    <line x1="1380" y1="420" x2="1820" y2="420" stroke="#0a0907" stroke-width="4"/>
+    <line x1="1380" y1="540" x2="1820" y2="540" stroke="#0a0907" stroke-width="4"/>
+    <line x1="1380" y1="660" x2="1820" y2="660" stroke="#0a0907" stroke-width="4"/>
+    <!-- One stray book on the top shelf -->
+    <rect x="1400" y="340" width="20" height="70" fill="#7a2f2a"/>
+    <rect x="1425" y="355" width="16" height="55" fill="#4a5a44"/>
+    <!-- Empty shelves — just the wood -->
+  </g>
+
+  <!-- Cardboard box (floor, left) -->
+  <g>
+    <path d="M 700 950 L 920 950 L 920 1060 L 700 1060 Z" fill="#8a6a45"/>
+    <path d="M 700 950 L 920 950 L 900 930 L 720 930 Z" fill="#a07c50"/>
+    <line x1="810" y1="930" x2="810" y2="950" stroke="#0a0907" stroke-width="2"/>
+    <rect x="740" y="985" width="120" height="8" fill="#5a3a2a" opacity="0.7"/>
+  </g>
+
+  <!-- Paint tin + roller (floor, far left) -->
+  <g>
+    <rect x="180" y="980" width="70" height="80" fill="#5a6a7a" stroke="#0a0907" stroke-width="3"/>
+    <rect x="180" y="980" width="70" height="18" fill="#7a8a9a" stroke="#0a0907" stroke-width="3"/>
+    <ellipse cx="215" cy="995" rx="30" ry="6" fill="#3a4a5a"/>
+    <rect x="270" y="1010" width="6" height="70" fill="#a07c50" transform="rotate(-15 273 1010)"/>
+    <rect x="265" y="1050" width="18" height="40" fill="#ece4d4" transform="rotate(-15 273 1050)"/>
+  </g>
+
+  <!-- Desk (center, foreground) -->
+  <g>
+    <rect x="700" y="720" width="600" height="30" fill="#5a3a2a" stroke="#0a0907" stroke-width="4"/>
+    <rect x="730" y="750" width="20" height="230" fill="#3a2010"/>
+    <rect x="1250" y="750" width="20" height="230" fill="#3a2010"/>
+    <rect x="730" y="750" width="540" height="10" fill="#1a0a02" opacity="0.5"/>
+  </g>
+
+  <!-- Lamp (on desk, lit) -->
+  <g>
+    <ellipse cx="1000" cy="715" rx="70" ry="10" fill="#1a0808"/>
+    <rect x="990" y="630" width="20" height="85" fill="#0a0907"/>
+    <path d="M 920 630 L 1080 630 L 1050 590 L 950 590 Z" fill="#4a6a4a" stroke="#0a0907" stroke-width="4"/>
+    <ellipse cx="1000" cy="632" rx="80" ry="12" fill="#3a5a3a"/>
+    <ellipse cx="1000" cy="632" rx="60" ry="5" fill="#f4dca8"/>
+    <!-- Warm glow from the lamp -->
+    <ellipse cx="1000" cy="700" rx="400" ry="260" fill="url(#lampGlow)" opacity="0.85"/>
+  </g>
+
+  <!-- Two chairs (one behind desk, one in front) -->
+  <g fill="#3a2010" stroke="#0a0907" stroke-width="3">
+    <rect x="820" y="800" width="140" height="20"/>
+    <rect x="820" y="820" width="140" height="140" fill="#2a1408"/>
+    <rect x="820" y="960" width="10" height="60"/>
+    <rect x="950" y="960" width="10" height="60"/>
+    <rect x="1050" y="820" width="140" height="180"/>
+    <rect x="1050" y="820" width="140" height="20" fill="#4a2a14"/>
+  </g>
+
+  <!-- Dust motes in the lamp light (tiny dots) -->
+  <g fill="#f4dca8" opacity="0.4">
+    <circle cx="920" cy="600" r="2"/>
+    <circle cx="1010" cy="560" r="1.5"/>
+    <circle cx="1050" cy="640" r="2"/>
+    <circle cx="960" cy="680" r="1.5"/>
+    <circle cx="1090" cy="600" r="1.5"/>
+    <circle cx="880" cy="650" r="2"/>
+  </g>
+
+  <!-- Vignette -->
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>

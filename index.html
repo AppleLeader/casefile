@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1b1a17" />
+    <!-- Prevent browser from caching the HTML file -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Casefile — Detective Agency</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+      <!-- About modal -->
+    <div class="modal-backdrop" id="about-modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true">
+        <h3 class="modal-title">About Casefile</h3>
+        <div class="about-body">
+          <p class="about-line"><strong>Casefile</strong> — a detective agency simulator</p>
+          <p class="about-line">Version 1.0</p>
+          <p class="about-line">Made in 2026 by a 14-year-old in Slovakia.</p>
+          <p class="about-line">Built with HTML, CSS, JavaScript, and Capacitor.</p>
+          <p class="about-line muted">Special thanks to my parents — for not asking too many questions while I was coding.</p>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-btn solid" id="about-close" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-screen">
+    <div class="loading-logo">Casefile</div>
+    <div class="loading-sub">PRIVATE INVESTIGATIONS</div>
+  </div>
+
+  <div id="app">
+
+    <!-- ===================== STATUS BAR ===================== -->
+    <header id="status-bar">
+      <div class="status-item" title="Money">
+        <span class="status-label">Funds</span>
+        <span class="status-value" id="stat-money">$0</span>
+      </div>
+      <div class="status-item" title="Reputation">
+        <span class="status-label">Reputation</span>
+        <span class="status-value" id="stat-reputation">0</span>
+      </div>
+      <div class="status-item" title="Agency Level">
+        <span class="status-label">Level</span>
+        <span class="status-value" id="stat-level">1</span>
+      </div>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Options menu" aria-haspopup="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- ---------- DROPDOWN MENU ---------- -->
+    <div id="menu-dropdown" class="menu-dropdown" role="menu" hidden>
+      <button class="menu-item" data-menu-action="saves"    role="menuitem">Saved Games</button>
+      <button class="menu-item" data-menu-action="new-game" role="menuitem">New Game</button>
+      <button class="menu-item" data-menu-action="about"    role="menuitem">About</button>
+      <button class="menu-item" data-menu-action="settings" role="menuitem">Settings</button>
+      <button class="menu-item" data-menu-action="support" role="menuitem">Support the developer</button>
+    </div>
+
+    <!-- ===================== SCREENS ===================== -->
+    <main id="screens">
+
+      <!-- ========== CUTSCENE ========== -->
+      <section class="screen cutscene" data-screen="cutscene" aria-live="polite">
+        <div class="cut-stage">
+          <div class="cut-bg" id="cut-bg"></div>
+          <div class="cut-vignette"></div>
+          <div class="cut-portrait-wrap" id="cut-portrait-wrap">
+            <div class="cut-portrait" id="cut-portrait"></div>
+          </div>
+          <div class="cut-scanline"></div>
+        </div>
+
+        <div class="cut-dialogue" id="cut-dialogue">
+          <div class="cut-speaker" id="cut-speaker"></div>
+          <p class="cut-text" id="cut-text"></p>
+          <div class="cut-actions">
+            <button class="cut-skip" id="cut-skip" type="button">Skip cutscene ›</button>
+            <button class="cut-continue" id="cut-continue" type="button">Continue ▸</button>
+          </div>
+        </div>
+
+        <div class="cut-progress" id="cut-progress" aria-hidden="true"><span></span></div>
+      </section>
+
+      <!-- ========== AGENCY ========== -->
+      <section class="screen" data-screen="agency">
+        <div class="agency-hero">
+          <div class="hero-bg" aria-hidden="true"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1 class="logo">Casefile</h1>
+            <p class="logo-sub">Private Investigations</p>
+          </div>
+        </div>
+
+        <div class="agency-body">
+          <div class="welcome-card">
+            <h2 class="card-title">Agency Status</h2>
+            <p class="welcome-text" id="agency-greeting">
+              The office is quiet. Time to get to work.
+            </p>
+            <div class="agency-stats-row">
+              <div class="agency-stat">
+                <span class="stat-label">Level</span>
+                <span class="stat-value" id="agency-level-val">1</span>
+              </div>
+              <div class="agency-stat">
+                <span class="stat-label">XP</span>
+                <span class="stat-value" id="agency-xp-val">0 / 100</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-card">
+              <span class="info-label">Active Cases</span>
+              <span class="info-number" id="active-case-count">0</span>
+            </div>
+            <div class="info-card">
+              <span class="info-label">Completed</span>
+              <span class="info-number" id="completed-case-count">0</span>
+            </div>
+          </div>
+
+          <h2 class="section-title" style="padding:0; margin-top:8px;">Office Upgrades</h2>
+          <div class="upgrade-list" id="upgrade-list">
+            <!-- Upgrades injected by JS -->
+          </div>
+        </div>
+      </section>
+      <!-- ========== CASES ========== -->
+      <section class="screen coming-soon" data-screen="cases">
+        <div class="placeholder-art"><span class="placeholder-tag">CASES · INVESTIGATIONS</span></div>
+        <h2>Cases</h2>
+        <p id="cases-body">Available, active and completed investigations will appear here.</p>
+        <p class="coming-tag">Coming soon</p>
+      </section>
+            <section class="screen" data-screen="case-detail"></section>
+      <section class="screen" data-screen="location"></section>
+      <section class="screen" data-screen="interview"></section>
+            <section class="screen" data-screen="board"></section>
+            <section class="screen" data-screen="accusation"></section>
+
+      <!-- ========== NOTEBOOK ========== -->
+      <section class="screen coming-soon" data-screen="notebook">
+        <div class="placeholder-art"><span class="placeholder-tag">NOTEBOOK · CLUES</span></div>
+        <h2>Notebook</h2>
+        <p>Collected clues and investigation notes will be kept here.</p>
+        <p class="coming-tag">Coming soon</p>
+      </section>
+
+      <!-- ========== PEOPLE ========== -->
+            <!-- ========== PEOPLE ========== -->
+      <section class="screen" data-screen="people">
+        <div class="people-header">
+          <h2 class="people-title">People</h2>
+        </div>
+        <div class="people-body" id="people-list"></div>
+      </section>
+
+            <!-- ========== PROGRESS ========== -->
+      <section class="screen" data-screen="progress">
+        <div class="progress-header">
+          <h2 class="progress-title">Progress</h2>
+        </div>
+        <div class="progress-body">
+          <div class="progress-card">
+            <div class="progress-row">
+              <span class="progress-label">Agency Level</span>
+              <span class="progress-value" id="prog-level">1</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Reputation</span>
+              <span class="progress-value" id="prog-reputation">0</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Total XP</span>
+              <span class="progress-value" id="prog-xp">0</span>
+            </div>
+            <div class="xp-bar"><div class="xp-bar-fill" id="prog-xp-bar"></div></div>
+            <div class="progress-row muted">
+              <span class="progress-label" id="prog-xp-label">0 / 100 XP to next level</span>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-row">
+              <span class="progress-label">Cases Completed</span>
+              <span class="progress-value" id="prog-cases-completed">0</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Cases Active</span>
+              <span class="progress-value" id="prog-cases-active">0</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Total Evidence Found</span>
+              <span class="progress-value" id="prog-evidence-total">0</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Total Interviews</span>
+              <span class="progress-value" id="prog-interviews-total">0</span>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <h3 class="progress-card-title">Achievements</h3>
+            <div class="achievements-list" id="prog-achievements">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+            <!-- ========== SAVED GAMES ========== -->
+      <section class="screen saves" data-screen="saves">
+        <div class="saves-header">
+          <button class="saves-back" id="saves-back" type="button">‹ Back</button>
+          <h2 class="saves-title">Saved Games</h2>
+        </div>
+        <div class="saves-list" id="saves-list"></div>
+        <button class="saves-new" id="saves-new" type="button">+ New Save Slot</button>
+      </section>
+    </main>
+
+    <!-- ===================== BOTTOM NAV ===================== -->
+    <nav id="bottom-nav">
+      <button class="nav-btn" data-target="agency">
+        <span class="nav-icon" data-icon="agency"></span><span class="nav-text">Agency</span>
+      </button>
+      <button class="nav-btn" data-target="cases">
+        <span class="nav-icon" data-icon="cases"></span><span class="nav-text">Cases</span>
+        <span class="nav-badge" id="cases-badge" hidden>NEW</span>
+      </button>
+      <button class="nav-btn" data-target="notebook">
+        <span class="nav-icon" data-icon="search"></span>
+        <span class="nav-text">Evidence</span>
+      </button>
+      <button class="nav-btn" data-target="people">
+        <span class="nav-icon" data-icon="people"></span><span class="nav-text">People</span>
+      </button>
+      <button class="nav-btn" data-target="progress">
+        <span class="nav-icon" data-icon="progress"></span><span class="nav-text">Progress</span>
+      </button>
+    </nav>
+
+    <!-- ===================== MODALS ===================== -->
+
+    <!-- Skip cutscene -->
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <div class="modal" role="dialog" aria-modal="true">
+        <h3 class="modal-title">Skip the opening?</h3>
+        <p class="modal-text">You'll jump straight to the case. The story can be replayed from the Progress screen later.</p>
+        <div class="modal-actions">
+          <button class="modal-btn ghost" id="modal-cancel"  type="button">Keep watching</button>
+          <button class="modal-btn solid" id="modal-confirm" type="button">Skip</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Game confirmation -->
+    <div class="modal-backdrop" id="newgame-modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true">
+        <h3 class="modal-title">Start a new game?</h3>
+        <p class="modal-text" id="newgame-modal-text">
+          A new save slot will be created and the opening story will begin.
+          Your existing saves will not be affected.
+        </p>
+        <div class="modal-actions">
+          <button class="modal-btn ghost" id="newgame-cancel"  type="button">Cancel</button>
+          <button class="modal-btn solid" id="newgame-confirm" type="button">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete save confirmation -->
+    <div class="modal-backdrop" id="delete-modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true">
+        <h3 class="modal-title">Delete this save?</h3>
+        <p class="modal-text" id="delete-modal-text">This cannot be undone.</p>
+        <div class="modal-actions">
+          <button class="modal-btn ghost" id="delete-cancel"  type="button">Cancel</button>
+          <button class="modal-btn solid" id="delete-confirm" type="button">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="support-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <h3 class="modal-title">Support Casefile</h3>
+    <p class="modal-text">
+      Casefile is a solo project made by a 14-year-old developer. I set
+      myself a challenge: build and publish a game in 30 days, and try to
+      earn enough from it to buy <em>Halloween: The Game</em> on Steam —
+      it came out last month, and I've been dying to play it.
+    </p>
+    <p class="modal-text">
+      If you can help with that, thank you. If you can't, playing the
+      game, leaving a review, or telling a friend is just as valuable.
+    </p>    <div class="modal-actions">
+      <button class="modal-btn ghost" id="support-cancel" type="button">Maybe later</button>
+      <button class="modal-btn solid" id="support-open" type="button">Open Ko-fi</button>
+     </div>
+     </div>
+    </div>
+
+  </div>
+
+<div id="save-indicator" class="save-indicator">Saved</div>
+
+  <script src="savemanager.js"></script>
+  <script src="case_data.js"></script>
+  <script src="case_data_002.js"></script>
+  <script src="case_data_003.js"></script>
+  <script src="case_data_004.js"></script>
+  <script src="case_engine.js"></script>
+  <script src="cutscene_assets.js"></script>
+  <script src="cutscene.js"></script>
+  <script src="script.js"></script>
+  <script src="menu.js"></script>
+  <script src="case_ui.js?v=2"></script>
+  <script src="case_interview.js"></script>
+  <script src="case_board.js"></script>
+  <script src="case_accusation.js"></script>
+  <script src="agency.js"></script>
+  <script src="progress.js"></script>
+  <script src="people.js"></script>
+  <script src="sounds.js"></script>
+</body>
+</html>

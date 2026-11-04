@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#2a3540"/>
+      <stop offset="50%"  stop-color="#5a6070"/>
+      <stop offset="100%" stop-color="#a09080"/>
+    </linearGradient>
+    <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1b1a17"/>
+      <stop offset="100%" stop-color="#0a0907"/>
+    </linearGradient>
+    <radialGradient id="backlight" cx="50%" cy="45%" r="60%">
+      <stop offset="0%"   stop-color="#d9d0c0" stop-opacity="0.5"/>
+      <stop offset="60%"  stop-color="#c8a880" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.85"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Room interior (dark) -->
+  <rect width="1920" height="1080" fill="url(#room)"/>
+
+  <!-- Large window (back wall, taking most of the frame) -->
+  <g>
+    <rect x="200" y="120" width="1520" height="760" fill="url(#sky)"/>
+    <!-- Window frame -->
+    <rect x="200" y="120" width="1520" height="760" fill="none" stroke="#0a0907" stroke-width="24"/>
+    <line x1="960" y1="120" x2="960" y2="880" stroke="#0a0907" stroke-width="20"/>
+    <line x1="200" y1="500" x2="1720" y2="500" stroke="#0a0907" stroke-width="20"/>
+
+    <!-- Distant city skyline through the window -->
+    <g fill="#1a1e26" opacity="0.85">
+      <rect x="220"  y="560" width="80"  height="320"/>
+      <rect x="310"  y="530" width="60"  height="350"/>
+      <rect x="380"  y="580" width="100" height="300"/>
+      <rect x="490"  y="620" width="70"  height="260"/>
+      <rect x="1000" y="570" width="90"  height="310"/>
+      <rect x="1100" y="540" width="70"  height="340"/>
+      <rect x="1180" y="600" width="110" height="280"/>
+      <rect x="1300" y="560" width="90"  height="320"/>
+      <rect x="1400" y="620" width="80"  height="260"/>
+      <rect x="1490" y="580" width="100" height="300"/>
+      <rect x="1600" y="620" width="90"  height="260"/>
+    </g>
+
+    <!-- Distant lit windows (a few amber dots) -->
+    <g fill="#d9b47a" opacity="0.6">
+      <rect x="240"  y="620" width="6" height="8"/>
+      <rect x="270"  y="680" width="6" height="8"/>
+      <rect x="330"  y="600" width="6" height="8"/>
+      <rect x="400"  y="660" width="6" height="8"/>
+      <rect x="1030" y="640" width="6" height="8"/>
+      <rect x="1130" y="610" width="6" height="8"/>
+      <rect x="1220" y="680" width="6" height="8"/>
+      <rect x="1420" y="660" width="6" height="8"/>
+      <rect x="1530" y="620" width="6" height="8"/>
+    </g>
+
+    <!-- Backlight glow behind the figure -->
+    <rect x="200" y="120" width="1520" height="760" fill="url(#backlight)"/>
+  </g>
+
+  <!-- The figure silhouette (Adrian, back to camera) -->
+  <g fill="#0a0907">
+    <!-- Head -->
+    <ellipse cx="1000" cy="420" rx="52" ry="60"/>
+    <!-- Neck + shoulders + coat -->
+    <path d="M 880 720
+             Q 890 570 950 500
+             Q 970 480 1000 475
+             Q 1030 480 1050 500
+             Q 1110 570 1120 720
+             Z"/>
+    <!-- Coat collar (raised, back) -->
+    <path d="M 940 500 L 970 540 L 1000 510 L 1030 540 L 1060 500
+             Q 1030 490 1000 490 Q 970 490 940 500 Z" fill="#1a1815"/>
+    <!-- Coffee cup (held in right hand, small silhouette against the window) -->
+    <ellipse cx="1160" cy="620" rx="24" ry="30" fill="#0a0907"/>
+    <rect x="1140" y="600" width="40" height="8" fill="#1a1815"/>
+    <!-- Arm holding the cup (silhouette) -->
+    <path d="M 1080 570 Q 1140 580 1150 620 L 1120 620 Q 1110 590 1080 590 Z" fill="#0a0907"/>
+  </g>
+
+  <!-- Window frame reflection (subtle diagonal glare on the glass) -->
+  <path d="M 240 140 L 350 140 L 130 880 L 20 880 Z" fill="#fff" opacity="0.04"/>
+
+  <!-- Vignette -->
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>
